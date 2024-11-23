@@ -27,24 +27,24 @@ export function useBrowserNativeTransitions() {
     }
 
     const onPopState = () => {
-      let pendingViewTransitionResolve: () => void
-
-      const pendingViewTransition = new Promise<void>((resolve) => {
-        pendingViewTransitionResolve = resolve
-      })
-
-      const pendingStartViewTransition = new Promise<void>((resolve) => {
-        // @ts-ignore
-        document.startViewTransition(() => {
-          resolve()
-          return pendingViewTransition
-        })
-      })
-
-      setCurrentViewTransition([
-        pendingStartViewTransition,
-        pendingViewTransitionResolve!,
-      ])
+      // let pendingViewTransitionResolve: () => void
+      //
+      // const pendingViewTransition = new Promise<void>((resolve) => {
+      //   pendingViewTransitionResolve = resolve
+      // })
+      //
+      // const pendingStartViewTransition = new Promise<void>((resolve) => {
+      //   // @ts-ignore
+      //   document.startViewTransition(() => {
+      //     resolve()
+      //     return pendingViewTransition
+      //   })
+      // })
+      //
+      // setCurrentViewTransition([
+      //   pendingStartViewTransition,
+      //   pendingViewTransitionResolve!,
+      // ])
     }
     window.addEventListener('popstate', onPopState)
 
